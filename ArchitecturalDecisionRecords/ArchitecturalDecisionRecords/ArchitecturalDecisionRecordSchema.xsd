@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ArchitecturalDecisionRecordSchema"
+    elementFormDefault="unqualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="adr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="useCase" type="xs:string" minOccurs="1"/>
+        <xs:element name="concernBeingAddressed" type="xs:string" minOccurs="1"/>
+        <xs:element name="agreedApproach" type="xs:string" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="acceptedDownside" type="xs:string" minOccurs="1"/>
+        <xs:element name="otherOptionConsidered" type="xs:string" minOccurs="1"/>
+        <xs:element name="engineerSignoff" type="xs:string" minOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
