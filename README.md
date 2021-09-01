@@ -18,7 +18,7 @@ The idea is for these records to:
 ///</summary
 ///<adr>
 ///<useCase></useCase>
-///<concernBeingAddessed></concernBeingAddessed>
+///<concernBeingAddressed></concernBeingAddressed>
 ///<agreedApproach></agreedApproach>
 ///<acceptedDownside></acceptedDownside>
 ///<otherOptionConsidered></otherOptionConsidered>
