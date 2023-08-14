@@ -1,32 +1,31 @@
-﻿using ArchitecturalDecisionRecords;
+﻿using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
-using System.Collections.Immutable;
 
-namespace ArchitetcturalDecisionRecords
+namespace ArchitecturalDecisionRecords
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ArchitecturalDecisionRecordsAnalyzer : DiagnosticAnalyzer
     {
-        public const string DiagnosticId = "ArchiecturalDecisionRecords";
+        public const string DiagnosticId = "ADR0001";
+       
+        private const string Category = "ArchiectralDecisions";
 
-        // You can change these strings in the Resources.resx file. If you do not want your analyzer to be localize-able, you can use regular strings for Title and MessageFormat.
-        // See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Localizing%20Analyzers.md for more on localization
-        private static readonly LocalizableString Title = new LocalizableResourceString(nameof(Resources.AnalyzerTitle), Resources.ResourceManager, typeof(Resources));
-        private static readonly LocalizableString MessageFormat = new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat), Resources.ResourceManager, typeof(Resources));
-        private static readonly LocalizableString Description = new LocalizableResourceString(nameof(Resources.AnalyzerDescription), Resources.ResourceManager, typeof(Resources));
-        private const string Category = "Archiectral Decisions";
+        public static readonly DiagnosticDescriptor ADR0001 = new DiagnosticDescriptor("ADR0001",
+            "Architectural Decision Records should be formed correctly", "Ensure elements confirm to the ADR schema",
+            Category, 
+            DiagnosticSeverity.Warning, 
+            isEnabledByDefault: true, 
+            description: "Architectural Decision Records should only use fields as per the ADR schema.");
 
-        public static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
-
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule); } }
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(ADR0001); } }
 
         public override void Initialize(AnalysisContext context)
         {
+            context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
+
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
-
-            context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
         }
 
         private static void AnalyzeSyntaxTree(SyntaxTreeAnalysisContext context)

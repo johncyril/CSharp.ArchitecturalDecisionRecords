@@ -1,9 +1,9 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using System;
+﻿using System;
 using System.Collections.Immutable;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 
-namespace ArchitetcturalDecisionRecords.Test
+namespace ArchitecturalDecisionRecords.Test.Verifiers
 {
     internal static class CSharpVerifierHelper
     {

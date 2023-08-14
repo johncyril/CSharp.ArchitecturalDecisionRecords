@@ -1,18 +1,13 @@
-﻿using ArchitecturalDecisionRecords;
+﻿using System;
+using System.Linq;
+using System.Xml;
+using System.Xml.Schema;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
 
-namespace ArchitetcturalDecisionRecords
+namespace ArchitecturalDecisionRecords
 {
     public class AdrSyntaxWalker : CSharpSyntaxWalker
     { 
@@ -81,7 +76,7 @@ namespace ArchitetcturalDecisionRecords
                     Diagnostic diagnostic = null;
                     document.Validate((o, e) =>
                          {
-                             diagnostic = Diagnostic.Create(ArchitecturalDecisionRecordsAnalyzer.Rule, adr.GetLocation(), className, e.Message, methodName);
+                             diagnostic = Diagnostic.Create(ArchitecturalDecisionRecordsAnalyzer.ADR0001, adr.GetLocation(), className, e.Message, methodName);
                              errors = true;
                          });
                     if (errors)
@@ -92,7 +87,7 @@ namespace ArchitetcturalDecisionRecords
                 }
                 catch (Exception e)
                 {
-                    var diagnostic = Diagnostic.Create(ArchitecturalDecisionRecordsAnalyzer.Rule, adr.GetLocation(), className, e.Message, methodName);
+                    var diagnostic = Diagnostic.Create(ArchitecturalDecisionRecordsAnalyzer.ADR0001, adr.GetLocation(), className, e.Message, methodName);
                     _analysisContext.ReportDiagnostic(diagnostic);
                 }
             }

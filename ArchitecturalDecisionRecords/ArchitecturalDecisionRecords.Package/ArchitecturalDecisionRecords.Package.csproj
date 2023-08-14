@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>ArchiecturalDecisionRecords</PackageId>
+    <PackageId>ArchitecturalDecisionRecords</PackageId>
     <PackageVersion>1.0.0.0</PackageVersion>
     <Authors>johnc</Authors>
     <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>
@@ -16,7 +16,7 @@
     <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
     <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>ArchiecturalDecisionRecords</Description>
+    <Description>ArchitecturalDecisionRecords</Description>
     <PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>
     <Copyright>Copyright</Copyright>
     <PackageTags>ArchiecturalDecisionRecords, analyzers</PackageTags>
@@ -26,8 +26,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArchitecturalDecisionRecords.CodeFixes\ArchiecturalDecisionRecords.CodeFixes.csproj" />
-    <ProjectReference Include="..\ArchitecturalDecisionRecords\ArchiecturalDecisionRecords.csproj" />
+    <ProjectReference Include="..\ArchitecturalDecisionRecords.CodeFixes\ArchitecturalDecisionRecords.CodeFixes.csproj" />
+    <ProjectReference Include="..\ArchitecturalDecisionRecords\ArchitecturalDecisionRecords.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,8 +36,8 @@
 
   <Target Name="_AddAnalyzersToOutput">
     <ItemGroup>
-      <TfmSpecificPackageFile Include="$(OutputPath)\ArchiecturalDecisionRecords.dll" PackagePath="analyzers/dotnet/cs" />
-      <TfmSpecificPackageFile Include="$(OutputPath)\ArchiecturalDecisionRecords.CodeFixes.dll" PackagePath="analyzers/dotnet/cs" />
+      <TfmSpecificPackageFile Include="$(OutputPath)\ArchitecturalDecisionRecords.dll" PackagePath="analyzers/dotnet/cs" />
+      <TfmSpecificPackageFile Include="$(OutputPath)\ArchitecturalDecisionRecords.CodeFixes.dll" PackagePath="analyzers/dotnet/cs" />
     </ItemGroup>
   </Target>
 

@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
-using VerifyCS = ArchitetcturalDecisionRecords.Test.CSharpCodeFixVerifier<
-    ArchitetcturalDecisionRecords.ArchitecturalDecisionRecordsAnalyzer,
-    ArchitetcturalDecisionRecords.ArchitecturalDecisionRecordsCodeFixProvider>;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using VerifyCS = ArchitecturalDecisionRecords.Test.Verifiers.CSharpCodeFixVerifier<
+    ArchitecturalDecisionRecords.ArchitecturalDecisionRecordsAnalyzer,
+    ArchitecturalDecisionRecords.ArchitecturalDecisionRecordsFixer>;
 
-namespace ArchitetcturalDecisionRecords.Test
+namespace ArchitecturalDecisionRecords.Test
 {
     [TestClass]
     public class ArchitecturalDecisionRecordsUnitTest
