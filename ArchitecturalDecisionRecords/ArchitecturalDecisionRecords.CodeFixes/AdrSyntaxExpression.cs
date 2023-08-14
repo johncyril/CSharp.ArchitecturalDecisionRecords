@@ -1,9 +1,7 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ArchitecturalDecisionRecords
 {
@@ -46,7 +44,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -96,7 +94,7 @@ namespace ArchitecturalDecisionRecords
                                 (
                                     SyntaxFactory.XmlName
                                     (
-                                        SyntaxFactory.Identifier("concernBeingAddessed")
+                                        SyntaxFactory.Identifier("concernBeingAddressed")
                                     )
                                 )
                                 .WithLessThanToken
@@ -105,7 +103,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -122,7 +120,7 @@ namespace ArchitecturalDecisionRecords
                                 (
                                     SyntaxFactory.XmlName
                                     (
-                                        SyntaxFactory.Identifier("concernBeingAddessed")
+                                        SyntaxFactory.Identifier("concernBeingAddressed")
                                     )
                                 )
                                 .WithLessThanSlashToken
@@ -164,7 +162,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -223,7 +221,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -282,7 +280,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -341,7 +339,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -391,7 +389,7 @@ namespace ArchitecturalDecisionRecords
                                 (
                                     SyntaxFactory.XmlName
                                     (
-                                        SyntaxFactory.Identifier("engineerSignoff")
+                                        SyntaxFactory.Identifier("engineerSignOff")
                                     )
                                 )
                                 .WithLessThanToken
@@ -400,7 +398,7 @@ namespace ArchitecturalDecisionRecords
                                     (
                                         SyntaxFactory.TriviaList
                                         (
-                                            SyntaxFactory.DocumentationCommentExterior("///")
+                                            SyntaxFactory.DocumentationCommentExterior("/// ")
                                         ),
                                         SyntaxKind.LessThanToken,
                                         SyntaxFactory.TriviaList()
@@ -417,7 +415,7 @@ namespace ArchitecturalDecisionRecords
                                 (
                                     SyntaxFactory.XmlName
                                     (
-                                        SyntaxFactory.Identifier("engineerSignoff")
+                                        SyntaxFactory.Identifier("engineerSignOff")
                                     )
                                 )
                                 .WithLessThanSlashToken
@@ -459,7 +457,7 @@ namespace ArchitecturalDecisionRecords
                                 (
                                     SyntaxFactory.TriviaList
                                     (
-                                        SyntaxFactory.DocumentationCommentExterior("///")
+                                        SyntaxFactory.DocumentationCommentExterior("/// ")
                                     ),
                                     SyntaxKind.LessThanToken,
                                     SyntaxFactory.TriviaList()
@@ -485,7 +483,7 @@ namespace ArchitecturalDecisionRecords
                                 (
                                     SyntaxFactory.TriviaList
                                     (
-                                        SyntaxFactory.DocumentationCommentExterior("///")
+                                        SyntaxFactory.DocumentationCommentExterior("/// ")
                                     ),
                                     SyntaxKind.LessThanSlashToken,
                                     SyntaxFactory.TriviaList()

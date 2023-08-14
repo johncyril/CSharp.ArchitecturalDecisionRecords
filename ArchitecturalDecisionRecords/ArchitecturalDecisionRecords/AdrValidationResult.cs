@@ -1,4 +1,4 @@
-﻿namespace ArchitetcturalDecisionRecords
+﻿namespace ArchitecturalDecisionRecords
 {
     internal class AdrValidationResult
     {
