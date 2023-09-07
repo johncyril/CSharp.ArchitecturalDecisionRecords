@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ArchitecturalDecisionRecords.Debug\ArchitecturalDecisionRecords.Debug.csproj" />
     <ProjectReference Include="..\ArchitecturalDecisionRecords\ArchitecturalDecisionRecords.csproj" />
   </ItemGroup>
 

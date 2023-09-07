@@ -56,11 +56,7 @@ namespace ArchitecturalDecisionRecords
 
         private void CheckForAndValidateAdrTrivia(DocumentationCommentTriviaSyntax xmlTrivia, string className, string methodName = null)
         {
-            var hasAdr = xmlTrivia.ChildNodes()
-                   .OfType<XmlElementSyntax>()
-                   .Any(i => i.StartTag.Name.ToString().Equals(AdrSchema.AdrRootName));
-
-            if (hasAdr)
+            if (xmlTrivia.HasArchitecturalDecisionRecord())
             {
                 // check structure of Adr
                 var adr = xmlTrivia.ChildNodes()
@@ -69,7 +65,7 @@ namespace ArchitecturalDecisionRecords
                 try
                 {
                     var document = new XmlDocument();
-                    document.Schemas = _schema;                    
+                    document.Schemas.Add(_schema);                    
                     document.LoadXml(adr.ToStringSummaryCommentsOmitted());                    
 
                     bool errors = false;

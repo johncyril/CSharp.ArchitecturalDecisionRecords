@@ -22,10 +22,9 @@ namespace ArchitecturalDecisionRecords
 
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
-
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
+            context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
         }
 
         private static void AnalyzeSyntaxTree(SyntaxTreeAnalysisContext context)

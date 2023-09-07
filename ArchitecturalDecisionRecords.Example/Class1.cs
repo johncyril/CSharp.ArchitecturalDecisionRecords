@@ -1,6 +1,9 @@
 ﻿namespace ArchitecturalDecisionRecords.Example
 {
-    ///<adr>
+    /// <summary>
+    ///   
+    /// </summary>
+    /// <adr></adr>
     public class Class1
     {
 

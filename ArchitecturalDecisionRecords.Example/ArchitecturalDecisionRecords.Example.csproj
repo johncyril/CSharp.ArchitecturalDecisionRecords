@@ -11,6 +11,7 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\ArchitecturalDecisionRecords.Debug\ArchitecturalDecisionRecords.Debug.csproj" />
 		<ProjectReference Include="..\ArchitecturalDecisionRecords\ArchitecturalDecisionRecords\ArchitecturalDecisionRecords.csproj">
 			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
 			<OutputItemType>Analyzer</OutputItemType>
