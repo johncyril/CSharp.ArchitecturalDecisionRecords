@@ -6,8 +6,7 @@ namespace ArchitecturalDecisionRecords
 {
     internal class AdrFixerWalker : CSharpSyntaxWalker
     {
-
-        public override void VisitClassDeclaration(ClassDeclarationSyntax node)
+         public override void VisitClassDeclaration(ClassDeclarationSyntax node)
         {
             if (node.HasStructuredTrivia)
             {

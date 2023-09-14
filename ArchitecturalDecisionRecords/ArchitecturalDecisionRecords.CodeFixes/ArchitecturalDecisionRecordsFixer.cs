@@ -14,10 +14,7 @@ namespace ArchitecturalDecisionRecords
     [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(ArchitecturalDecisionRecordsFixer)), Shared]
     public class ArchitecturalDecisionRecordsFixer : CodeFixProvider
     {
-        public sealed override ImmutableArray<string> FixableDiagnosticIds
-        {
-            get { return ImmutableArray.Create(ArchitecturalDecisionRecordsAnalyzer.ADR0001.Id); }
-        }
+        public sealed override ImmutableArray<string> FixableDiagnosticIds => ImmutableArray.Create(ArchitecturalDecisionRecordsAnalyzer.ADR0001.Id);
 
         public sealed override FixAllProvider GetFixAllProvider()
         {
@@ -37,10 +34,6 @@ namespace ArchitecturalDecisionRecords
 
                 // Find the trivia representing the ADR
                 var nodeContainingAdr = root.FindNode(diagnosticSpan);
-               
-                //.GetStructure().ChildNodes()
-                //.OfType<XmlElementSyntax>()
-                //.Where(i => i.StartTag.Name.ToString().Equals(AdrSchema.AdrRootName));
 
                 // Register a code action that will invoke the fix.
                 context.RegisterCodeFix(
@@ -63,44 +56,45 @@ namespace ArchitecturalDecisionRecords
         /// <returns></returns>
         private async Task<Document> CorrectlyFormatAdr(Document document, SyntaxNode nodeContainingAdrToFix, CancellationToken cancellationToken)
         { 
-            var schema = AdrSchema.Instance;
-             
+            var schema = AdrSchema.Instance; 
             var elementNodes = SyntaxFactory.List<XmlNodeSyntax>();
+            var syntaxTokenList = new SyntaxTokenList();
             foreach (XmlSchemaElement element in schema.Schemas().Cast<XmlSchema>().First().Elements.Values)
             {
                 if (element.ElementSchemaType is XmlSchemaComplexType complexType)
                 {
+                    // Start Tag for complex elements
+                    syntaxTokenList = syntaxTokenList.Add(AdrSyntaxFactory.XmlDocumentationSyntaxNode(element.Name, startTagOnly:true));
+
                     // Get the sequence particle of the complex type.
                     XmlSchemaSequence sequence = complexType.ContentTypeParticle as XmlSchemaSequence;
 
-                    var childNodes = SyntaxFactory.List<XmlNodeSyntax>();
                     // Iterate over each XmlSchemaElement in the Items collection.
                     foreach (XmlSchemaElement childElement in sequence.Items)
                     {
-                        var xmlName = SyntaxFactory.XmlName(childElement.Name);
-                        //childNodes = childNodes.Add(SyntaxFactory.XmlElement(SyntaxFactory.XmlElementStartTag(xmlName), SyntaxFactory.XmlElementEndTag(xmlName)));
-                        childNodes = childNodes.Add(SyntaxFactory.XmlElement(SyntaxFactory.XmlElementStartTag(xmlName), SyntaxFactory.XmlElementEndTag(xmlName)));
-                      
-                    }
+                        //syntaxTokenWay
+                        syntaxTokenList = syntaxTokenList.Add(AdrSyntaxFactory.XmlDocumentationSyntaxNode(childElement.Name));
+                    }                  
 
-                    elementNodes = elementNodes.Add(SyntaxFactory.XmlMultiLineElement(element.Name, childNodes));
-                    
+                    // End Tag for complex elements
+                    syntaxTokenList = syntaxTokenList.Add(AdrSyntaxFactory.XmlDocumentationSyntaxNode(element.Name, endTagOnly: true));
                 }
                 else
                 {
                    elementNodes = elementNodes.Add(SyntaxFactory.XmlEmptyElement(element.Name));
+                   syntaxTokenList = syntaxTokenList.Add(AdrSyntaxFactory.XmlDocumentationSyntaxNode(element.Name));
                 }
             }
 
-           // Log.Info(elementNodes.ToFullString());
+            // Log.Info(elementNodes.ToFullString());
             // https://github.com/dotnet/roslyn/issues/5350#issuecomment-160764691
-            //var adrTrivia = SyntaxFactory.SyntaxTrivia(SyntaxKind.SingleLineDocumentationCommentTrivia, elementNodes.ToArray());
-            var adrTrivia = SyntaxFactory.Trivia(SyntaxFactory.DocumentationComment(elementNodes.ToArray());
+            var adrTrivia = SyntaxFactory.SyntaxTrivia(SyntaxKind.DocumentationCommentExteriorTrivia, syntaxTokenList.ToFullString());
             
             var triviaToReplace = nodeContainingAdrToFix.GetLeadingTrivia().First(x => x.Kind() == SyntaxKind.SingleLineDocumentationCommentTrivia);
 
             var root = await document.GetSyntaxRootAsync(cancellationToken);
             root = root.ReplaceTrivia(triviaToReplace, adrTrivia);
+            root = root.NormalizeWhitespace();
 
             return document.WithSyntaxRoot(root);
 

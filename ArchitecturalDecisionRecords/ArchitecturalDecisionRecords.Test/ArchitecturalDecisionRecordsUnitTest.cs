@@ -90,14 +90,14 @@ namespace ArchitecturalDecisionRecords.Test
             var expectedSource = @"            
             namespace ConsoleApplication1
             {
-                ///<adr>
-                ///<useCase></useCase>
-                ///<concernBeingAddressed></concernBeingAddressed>
-                ///<agreedApproach></agreedApproach>
-                ///<acceptedDownside></acceptedDownside>
-                ///<otherOptionConsidered></otherOptionConsidered>
-                ///<engineerSignOff></engineerSignOff>
-                ///</adr>
+/// <adr>
+/// <useCase></useCase>
+/// <concernBeingAddressed></concernBeingAddressed>
+/// <agreedApproach></agreedApproach>
+/// <acceptedDownside></acceptedDownside>
+/// <otherOptionConsidered></otherOptionConsidered>
+/// <engineerSignOff></engineerSignOff>
+/// </adr>
                 class {|#0:TypeName|}
                 {   
                 }
